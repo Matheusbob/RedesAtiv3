@@ -1,0 +1,61 @@
+import java.io.*;
+
+import java.net.*;
+class ClienteTCPAtiv3 {
+
+    public static void main(String argv[ ]) throws Exception
+    {
+        String sentence;
+        String serverAnswer;
+
+        BufferedReader teclado =
+                new BufferedReader(new InputStreamReader(System.in));
+
+
+
+        Socket clientSocket;
+        System.out.println ("Abrindo conexão na porta 9090 ");
+
+        try {
+
+            while (true) {
+
+                clientSocket = new Socket("localhost", 9090);
+
+                OutputStreamWriter socketSaidaServer =
+                        new OutputStreamWriter(clientSocket.getOutputStream());
+
+                BufferedReader socketEntrada =
+                        new BufferedReader(new
+                                InputStreamReader(clientSocket.getInputStream()));
+
+
+                System.out.println("Digite a mensagem e tecle enter");
+                sentence = teclado.readLine();
+
+                socketSaidaServer.write(sentence + '\n');
+                socketSaidaServer.flush();
+
+                System.out.println("Mensagem enviada");
+
+                serverAnswer = socketEntrada.readLine();
+
+                System.out.println("Tiago: " + serverAnswer);
+
+
+                //clientSocket.close();
+
+            }
+
+
+        }catch (java.net.ConnectException e){
+
+            System.out.println ("Servidor fora do ar");
+            //e.printStackTrace();
+
+        }
+
+
+
+    }
+}
