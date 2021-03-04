@@ -1,0 +1,44 @@
+import java.io.*;
+import java.net.*;
+
+class ServidorTCPAtiv3 {
+
+    public static void main(String argv[]) throws Exception
+    {
+        String msgCliente;
+        String sentence;
+
+        BufferedReader teclado =
+                new BufferedReader(new InputStreamReader(System.in));
+
+
+        ServerSocket welcomeSocket = new ServerSocket(9090);
+
+        System.out.println ("Esperando Mensagem Dele...");
+
+        while(true) {
+
+            Socket connectionSocket = welcomeSocket.accept();
+            System.out.println ("Nova Mensagem");
+
+            BufferedReader socketEntradaCliente =
+                    new BufferedReader(new
+                            InputStreamReader(connectionSocket.getInputStream()));
+
+            OutputStreamWriter  socketSaidaCliente =
+                    new OutputStreamWriter(connectionSocket.getOutputStream());
+
+            msgCliente = socketEntradaCliente.readLine();
+
+            System.out.println ("Matheus: "+msgCliente);
+
+            System.out.println ("Digite a mensagem e tecle enter");
+            sentence = teclado.readLine();
+
+            socketSaidaCliente.write(sentence + '\n');
+            //socketSaidaCliente.write(new String("Boa noite, voce é o cliente socket de nº")+"\n");
+            socketSaidaCliente.flush();
+        }
+    }
+}
+
