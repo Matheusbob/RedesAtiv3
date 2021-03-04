@@ -14,7 +14,7 @@ class ServidorTCPAtiv3 {
 
         ServerSocket welcomeSocket = new ServerSocket(9090);
 
-        System.out.println ("Esperando Mensagem Dele...");
+        System.out.println ("Esperando Mensagem do Cliente...");
 
         while(true) {
 
@@ -30,7 +30,7 @@ class ServidorTCPAtiv3 {
 
             msgCliente = socketEntradaCliente.readLine();
 
-            System.out.println ("Matheus: "+msgCliente);
+            System.out.println ("Cliente: "+msgCliente);
 
             System.out.println ("Digite a mensagem e tecle enter");
             sentence = teclado.readLine();
