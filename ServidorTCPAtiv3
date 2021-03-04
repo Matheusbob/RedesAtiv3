@@ -36,7 +36,6 @@ class ServidorTCPAtiv3 {
             sentence = teclado.readLine();
 
             socketSaidaCliente.write(sentence + '\n');
-            //socketSaidaCliente.write(new String("Boa noite, voce é o cliente socket de nº")+"\n");
             socketSaidaCliente.flush();
         }
     }
