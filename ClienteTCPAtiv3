@@ -40,7 +40,7 @@ class ClienteTCPAtiv3 {
 
                 serverAnswer = socketEntrada.readLine();
 
-                System.out.println("Tiago: " + serverAnswer);
+                System.out.println("Servidor: " + serverAnswer);
 
 
                 //clientSocket.close();
