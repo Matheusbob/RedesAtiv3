@@ -19,7 +19,7 @@ class ServidorTCPAtiv3 {
         while(true) {
 
             Socket connectionSocket = welcomeSocket.accept();
-            System.out.println ("Nova Mensagem");
+            System.out.println ("Mensagem Enviada");
 
             BufferedReader socketEntradaCliente =
                     new BufferedReader(new
